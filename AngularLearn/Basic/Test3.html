@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body ng-app="app">
+    <div ng-init="quantity=1;price=5">
+        <h2>Calculator</h2>
+        count: <input type="number" ng-model="quantity" />
+        price: <input type="number" ng-model="price" />
+        <p><b>total:</b>{{quantity * price}}</p>
+    </div>
+    <div ng-init="names=['A','B','C']">
+        <p>use ng-repeat to circulate array</p>
+        <ul>
+            <!-- ng-repeat 指令对于集合中（数组中）的每个项会 克隆一次 HTML 元素 -->
+            <li ng-repeat="x in names">
+                {{x}}
+            </li>
+        </ul>
+    </div>
+    <div ng-init="objs=[
+         {name:'A', country:'CA'},{name:'B',country:'CB'},{name:'C',country:'CC'}
+         ]">
+        <p>circulate objects:</p>
+        <ul>
+            <li ng-repeat="x in objs">
+                {{x.name + ' ' + x.country}}
+            </li>
+        </ul>
+    </div>
+    <!-- 可以通过 元素名 属性 类名 注释 的方式调用指令 -->
+    <runoob-directive></runoob-directive>
+    <div runoob-directive></div>
+
+    <!-- 必须设置 restrict 的值为 "C" -->
+    <div class="runooc-directive"></div>
+    <p><strong>注意：</strong> 你必须设置 <b>restrict</b> 的值为 "C" 才能通过类名来调用指令。</p>
+
+    <!-- directive: runoom-directive -->
+    <p><strong>注意：</strong> 我们需要在该实例添加 <strong>replace</strong> 属性， 否则评论是不可见的。</p>
+    <p><strong>注意：</strong> 你必须设置 <b>restrict</b> 的值为 "M" 才能通过注释来调用指令。</p>
+
+    <script src="../Script/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.directive("runoobDirective", function () {
+            return {
+                template: '<h1>custom directive</h1>'
+            }
+        });
+        app.directive("runoocDirective", function () {
+            return {
+                restrict: 'C',
+                template: '<h1>custom directive</h1>'
+            }
+        });
+        app.directive("runoomDirective", function () {
+            return {
+                restrict: 'M',
+                replace: true,
+                template: '<h1>custom directive</h1>'
+            }
+        });
+    </script>
+</body>
+</html>

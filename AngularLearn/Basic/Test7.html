@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body ng-app="app">
+    <div ng-controller="personCtrl">
+        <p>last name(l): {{lastName | lowercase}}</p>
+        <p>last name(u): {{lastName | uppercase}}</p>
+    </div>
+    <div ng-controller="costCtrl">
+        count: <input type="number" ng-model="quantity" />
+        price: <input type="number" ng-model="price">
+        <p>total = {{(quantity * price) | currency}}</p>
+    </div>
+    <div ng-controller="namesCtrl">
+        filter: <input type="text" ng-model="filterStr" />
+        <p>circulation:</p>
+        <ul>
+            <li ng-repeat="x in names | filter: filterStr| orderBy: 'country'">
+                {{x.name + ' ' + x.country}};
+            </li>
+        </ul>
+        <ul>
+            <li ng-repeat="x in names | filter: {'name':'Jani'}| orderBy: 'country'">
+                {{x.name + ' ' + x.country}};
+            </li>
+        </ul>
+    </div>
+    <div ng-controller="reverseCtrl">
+        <input type="text" ng-model="msg" />
+        <p>reverse msg is {{msg | reverse}}</p>
+    </div>
+
+    <div>{{1490161945000 | date:"yyyy-MM-dd HH:mm:ss"}}</div>
+    <div>{{149016.1945000 | number:2}}</div>
+    <div>{{ 250 | currency:"RMB ￥ " }}</div>
+    <!-- 从前面开始截取6位 -->
+    <div>{{"1234567890" | limitTo :6}}</div>
+    <!-- 从后面开始截取4位 -->
+    <div>{{"1234567890" | limitTo:-4}}</div>
+
+    <script src="/Script/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('personCtrl', function ($scope) {
+            $scope.lastName = 'Zhang';
+        });
+        app.controller('costCtrl', function ($scope) {
+            $scope.price = 9.99;
+            $scope.quantity = 1;
+        });
+        app.controller('namesCtrl', function ($scope) {
+            $scope.names = [
+                { name: 'Jani', country: 'Norway' },
+                { name: 'Hege', country: 'Sweden' },
+                { name: 'Kai', country: 'Denmark' }
+            ];
+        });
+        app.controller('reverseCtrl', function ($scope) {
+            $scope.msg = 'Test';
+        });
+        app.filter('reverse', function () {
+            return function (text) {
+                return text.split('').reverse().join('');
+            }
+        });
+    </script>
+</body>
+</html>

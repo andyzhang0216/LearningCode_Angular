@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body ng-app="app">
+    <div ng-controller="urlCtrl">
+        <p>
+            Current Page Url:
+        </p>
+        <h4>{{currentUrl}}</h4>
+    </div>
+    <div ng-controller="httpCtrl">
+        <p>baidu data</p>
+        {{baidu}}
+    </div>
+    <div ng-controller="timeoutCtrl">
+        <p>Will Show after 2 seconds:</p>
+        <h1>{{msg}}</h1>
+    </div>
+    <div ng-controller="intervalCtrl">
+        <p>Now is :</p>
+        <h1>{{theTime}}</h1>
+    </div>
+    <div ng-controller="customCtrl">
+        <p>Hexadecimal of 255 is :</p>
+        <h1>{{hex}}</h1>
+        <h1>{{254 | hexafyFormat}}</h1>
+
+        <ul>
+            <li ng-repeat="c in counts">{{c | hexafyFormat}}</li>
+        </ul>
+    </div>
+    <script src="/Script/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('urlCtrl', function ($scope, $location) {
+            $scope.currentUrl = $location.absUrl();
+        });
+        app.controller('httpCtrl', function ($scope, $http) {
+            $http.get('test1.html').then(function (response) {
+                $scope.baidu = response.data;
+            });
+        });
+        app.controller('timeoutCtrl', function ($scope, $timeout) {
+            $scope.msg = "First Message!";
+            $timeout(function () {
+                $scope.msg = "Second Message!";
+            }, 2000);
+        });
+        app.controller('intervalCtrl', function ($scope, $interval) {
+            $scope.theTime = new Date().toLocaleTimeString();
+            $interval(function () {
+                $scope.theTime = new Date().toLocaleTimeString();
+            }, 1000);
+            //不适用服务的方式
+            //$scope.setTime = function () {
+            //    //$apply 修改数据源
+            //    $scope.$apply(function () {
+            //        $scope.theTime = new Date().toLocaleTimeString();
+            //    });
+            //};
+            //setInterval($scope.setTime, 1000);
+        });
+        app.service('$hexafy', function () {
+            this.TestFunc16 = function (x) {
+                return x.toString(16);
+            }
+            this.TestFunc8 = function (x) {
+                return x.toString(8);
+            }
+        });
+        app.controller('customCtrl', customCtrl);
+        customCtrl.$inject = ['$scope', '$hexafy'];
+        function customCtrl($scope, $hexafy) {
+            $scope.hex = $hexafy.TestFunc16(255);
+            $scope.counts = [255, 251, 200];
+        }
+
+        app.filter('hexafyFormat', ['$hexafy', function ($hexafy) {
+            return function (x) {
+                return $hexafy.TestFunc16(x);
+            };
+        }]);
+    </script>
+</body>
+</html>

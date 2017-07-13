@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <!-- <div> 元素是 AngularJS 应用程序 的"所有者" -->
+    <div ng-app="">
+        <!-- 输入域的值绑定到应用程序变量 name -->
+        <p>name: <input type="text" ng-model="name" /></p>
+        <!-- 把应用程序变量 name 绑定到某个段落的 innerHTML -->
+        <h1>hello {{name}}</h1>
+    </div>
+    <script src="/Script/angular.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body ng-app="">
+    <div>
+        <p>First Expression: {{5+5}}</p>
+    </div>
+    <div ng-init="quantity=1;cost=5">
+        <p>quantity * cost = total: {{quantity * cost}}</p>
+        <p>quantity * cost = total: <span ng-bind="quantity * cost"></span></p>
+    </div>
+    <div ng-init="firstName='Andy';lastName='Zhang'">
+        <p>name: {{firstName + ' ' + lastName}}</p>
+    </div>
+    <div ng-init="person={firstName:'Andy', lastName:'Zhang'}">
+        <p>name: {{person.firstName + ' ' + person.lastName}}</p>
+    </div>
+    <div ng-init="points=[1,2,3,4,5]">
+        <p>Third Point is {{points[2]}}</p>
+    </div>
+    <script src="../Script/angular.min.js"></script>
+</body>
+</html>
