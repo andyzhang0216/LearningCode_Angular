@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body ng-app="">
+    <div ng-init="mySwitch=true">
+        <p><input type="button" ng-disabled="!mySwitch" value="Click" /></p>
+        <p><input type="checkbox" ng-model="mySwitch" />Check</p>
+        <p>{{mySwitch}}</p>
+        <br />
+        <p ng-show="true">Visible</p>
+        <p ng-show="false">Not Visible</p>
+    </div>
+    <div ng-init="hour=13">
+        <p ng-show="hour>12">Visible</p>
+    </div>
+    <div>
+        <p ng-hide="true">Not Visible</p>
+        <p ng-hide="false">Visible</p>
+    </div>
+    <script src="/Script/angular.min.js"></script>
+</body>
+</html>

@@ -65,6 +65,14 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Basic\Test10.html" />
+    <Content Include="Basic\Test11.html" />
+    <Content Include="Basic\Test12.html" />
+    <Content Include="Basic\Test13.html" />
+    <Content Include="Basic\Test14.html" />
+    <Content Include="Basic\Test15.html" />
+    <Content Include="Basic\Test16.html" />
+    <Content Include="Basic\Test17.html" />
     <Content Include="Basic\Test2.html" />
     <Content Include="Basic\Test3.html" />
     <Content Include="Basic\Test4.html" />
@@ -72,7 +80,9 @@
     <Content Include="Basic\Test6.html" />
     <Content Include="Basic\Test7.html" />
     <Content Include="Basic\Test8.html" />
+    <Content Include="Basic\Test9.html" />
     <Content Include="packages.config" />
+    <Content Include="PhpData\Names.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -87,6 +97,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="PhpData\Sites.json" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

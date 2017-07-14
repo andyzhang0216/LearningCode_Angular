@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body ng-app="app">
+    <div ng-controller="formCtrl">
+        <form novalidate>
+            First Name:<br />
+            <input type="text" ng-model="user.firstName" /><br />
+            Last Name:<br />
+            <input type="text" ng-model="user.lastName" /><br />
+            <br />
+            <input type="button" ng-click="reset()" value="Reset" />
+            <br />
+            Check to show a header:
+            <input type="checkbox" ng-model="myVar">
+            <h1 ng-show="myVar">My Header</h1>
+
+            <br />
+            <input type="radio" ng-model="myVar1" value="dogs">Dogs
+            <input type="radio" ng-model="myVar1" value="tuts">Tutorials
+            <input type="radio" ng-model="myVar1" value="cars">Cars
+
+            <br />
+            <select ng-model="myVar">
+                <option value="">
+                <option value="dogs">Dogs
+                <option value="tuts">Tutorials
+                <option value="cars">Cars
+            </select>
+        </form>
+    </div>
+    <script src="/Script/angular.min.js"></script>
+    <script>
+        var app = angular.module('app', []);
+        app.controller('formCtrl', function ($scope) {
+            $scope.master = { firstName: 'Andy', lastName: 'Zhang' }
+            $scope.reset = function () {
+                $scope.user = angular.copy($scope.master);
+            };
+            $scope.reset();
+        });
+    </script>
+</body>
+</html>
