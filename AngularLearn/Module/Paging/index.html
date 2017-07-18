@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>Paging</title>
+    <meta charset="utf-8" />
+    <link href="/CSS/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container" ng-controller="pageCtrl">
+        <pagination num-pages="pages" curr-page="page" on-select-page="selectPage(page)"></pagination>
+    </div>
+
+    <script src="/Script/angular.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

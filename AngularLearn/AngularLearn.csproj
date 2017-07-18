@@ -81,6 +81,9 @@
     <Content Include="Basic\Test7.html" />
     <Content Include="Basic\Test8.html" />
     <Content Include="Basic\Test9.html" />
+    <Content Include="CSS\bootstrap.min.css" />
+    <Content Include="Module\Paging\index.html" />
+    <Content Include="Module\Paging\index.js" />
     <Content Include="packages.config" />
     <Content Include="PhpData\Names.json" />
     <None Include="Web.Debug.config">
